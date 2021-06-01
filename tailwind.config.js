@@ -7,6 +7,13 @@ module.exports = {
       fontFamily: {
         mainFont: ["Lato", "sans-serif"],
       },
+      maxWidth: {
+        xxs: "270px",
+      },
+      screens: {
+        xs: "414px",
+        sm: "640px",
+      },
     },
   },
   variants: {
