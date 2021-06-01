@@ -3,7 +3,7 @@ import Link from "next/link";
 function Footer() {
   return (
     <footer className="bg-[#242424] text-white font-mainFont pt-32 pb-12">
-      <div className="grid grid-cols-2 gap-4 text-center mx-4 px-5 xl:px-0 md:max-w-screen-xl md:mx-auto md:flex md:text-left  md:justify-between">
+      <div className="grid grid-cols-2 gap-4 text-center mx-4 px-5 xl:px-0 md:max-w-screen-lg md:mx-auto md:flex md:text-left  md:justify-between">
         <div className="">
           <h3 className="mb-6">FUNCLOTHING</h3>
           <Link href="/about">

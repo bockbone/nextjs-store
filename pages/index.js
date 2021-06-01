@@ -13,11 +13,11 @@ export default function Home() {
         <title>Clothing Store</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="max-w-screen-xl mx-auto">
-        <div>
+      <div>
+        <div className="max-w-screen-mediumlg mx-auto">
           <Header />
         </div>
-        <main className="">
+        <main className="max-w-screen-xl mx-auto">
           <Carousel />
           <ProductFeed productData={productData} />
           <Trends />
