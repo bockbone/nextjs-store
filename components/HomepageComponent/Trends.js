@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function Trends() {
   return (
-    <div className="font-mainFont flex flex-col items-center md:flex-row md:justify-center md:gap-10 md:my-32">
+    <div className="font-mainFont flex flex-col items-center md:flex-row md:justify-center md:gap-10 md:my-32 md:mx-4 lg:mx-0">
       <div className="mb-10 md:mb-0">
         <h3 className="text-6xl uppercase font-black md:text-8xl">
           Trends<br></br>2021
