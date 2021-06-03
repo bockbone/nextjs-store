@@ -1,4 +1,4 @@
-import Button from "../Button";
+import CustomButton from "../Button";
 import Image from "next/image";
 
 function Trends() {
@@ -14,7 +14,7 @@ function Trends() {
             eget habitasse et vestibulum. Felis libero enim morbi curabitur
             lectus nisi, eu id commodo.
           </p>
-          <Button text={"Find Out"} />
+          <CustomButton text={"Find Out"} />
         </div>
       </div>
       <div className="relative max-w-[240px] md:max-w-2xl">

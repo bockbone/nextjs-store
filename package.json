@@ -8,9 +8,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
     "next": "latest",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-material-ui-carousel": "^2.2.6"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.4",
