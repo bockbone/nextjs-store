@@ -1,37 +1,23 @@
-import React from "react";
-import Carousel from "react-material-ui-carousel";
-import { Paper } from "@material-ui/core";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Pagination } from "swiper/core";
 
-function MyCarousel(props) {
-  const items = [
-    {
-      imagePath: "slide-one.jpg",
-    },
-    {
-      imagePath: "slide-two.jpg",
-    },
-  ];
+SwiperCore.use([Pagination]);
+
+function MyCarousel() {
   return (
     <div className="max-w-screen-mediumlg mx-auto">
-      <Carousel
-        animation="slide"
-        navButtonsAlwaysInvisible={true}
-        autoPlay={false}
-        fullHeightHover="false"
-      >
-        {items.map((item, i) => (
-          <Item key={i} item={item} />
-        ))}
-      </Carousel>
-    </div>
-  );
-}
+      <div className="mx-5 xl:mx-0 my-20">
+        <Swiper spaceBetween={30} pagination={{ clickable: true }}>
+          <SwiperSlide>
+            <img className="rounded-xl" src="/slide-one.jpg" />
+          </SwiperSlide>
 
-function Item(props) {
-  return (
-    <Paper>
-      <img src={`/${props.item.imagePath}`} />
-    </Paper>
+          <SwiperSlide>
+            <img className="rounded-xl" src="/slide-two.jpg" />
+          </SwiperSlide>
+        </Swiper>
+      </div>
+    </div>
   );
 }
 
