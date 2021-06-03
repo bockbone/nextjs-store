@@ -3,3 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .dashboardNav {
+    @apply flex transition hover:bg-[#362F78] hover:text-gray-200 p-2 cursor-pointer rounded-lg;
+  }
+
+  .active {
+    @apply flex transition bg-[#362F78] text-gray-200 p-2 cursor-pointer rounded-lg;
+  }
+}
