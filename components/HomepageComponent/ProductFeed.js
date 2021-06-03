@@ -14,7 +14,7 @@ function ProductFeed({ productData }) {
           >
             <div className="relative">
               <Image
-                src="/product.png"
+                src={`/${data.imageUrl}`}
                 width={270}
                 height={350}
                 objectFit="contain"
