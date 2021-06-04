@@ -1,20 +1,20 @@
 import Head from "next/head";
-import ProductDashboardContent from "../../components/dashboard/ProductDashboardContent";
+import OrderDashboardContent from "../../components/dashboard/OrderDashboardContent";
 import Sidebar from "../../components/dashboard/Sidebar";
 
-function Product() {
+function Order() {
   return (
     <div>
       <Head>
-        <title>Product</title>
+        <title>Order</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex h-screen font-mainFont">
         <Sidebar />
-        <ProductDashboardContent />
+        <OrderDashboardContent />
       </main>
     </div>
   );
 }
 
-export default Product;
+export default Order;

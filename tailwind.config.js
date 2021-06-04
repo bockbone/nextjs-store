@@ -27,6 +27,10 @@ module.exports = {
       animation: {
         "fade-in": "fade-in 0.2s ease-in-out",
       },
+      colors: {
+        mainColor: "#662BE3",
+        hoverMainColor: "#362F78",
+      },
     },
   },
   variants: {
