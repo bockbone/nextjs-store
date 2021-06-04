@@ -23,7 +23,12 @@ function TopBar({ nav }) {
           <ChevronDownIcon className="w-4 h-4" />
         </div>
         {isOpen ? null : (
-          <div className="absolute bg-white right-0 mt-2 w-56 border shadow-sm rounded-md animate-fade-in animate-fade-in">
+          <div
+            className="absolute bg-white right-0 mt-2 w-56 border shadow-sm rounded-md animate-fade-in animate-fade-in"
+            onMouseLeave={() => {
+              setIsOpen(true);
+            }}
+          >
             <div className="flex flex-col text-gray-800 text-sm">
               <Link href="/dashboard/profile">
                 <a className="py-2 pl-10 hover:bg-gray-100">My profile</a>

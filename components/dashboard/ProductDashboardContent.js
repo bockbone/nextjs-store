@@ -162,7 +162,7 @@ function ProductDashboardContent() {
   return (
     <div className="flex-auto font-mainFont max-h-screen overflow-auto">
       <div className="flex flex-col">
-        <TopBar nav="Product" />
+        <TopBar nav="Dashboard / Product" />
       </div>
       <div className="mx-16 my-10 ">
         <div className="flex items-center space-x-6">

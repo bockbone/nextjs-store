@@ -4,155 +4,28 @@ const people = [
   {
     name: "Jane Cooper",
     title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "T-shirt",
+    role: "Admin",
     email: "jane.cooper@example.com",
     price: 20,
+    active: true,
   },
   {
     name: "Jane Cooper",
     title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
+    role: "Content Manager",
     email: "jane.cooper@example.com",
     price: 20,
+    active: false,
   },
   {
     name: "Jane Cooper",
     title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
+    role: "User",
     email: "jane.cooper@example.com",
     price: 20,
+    active: true,
   },
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
-    email: "jane.cooper@example.com",
-    price: 20,
-  },
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
-    email: "jane.cooper@example.com",
-    price: 20,
-  },
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
-    email: "jane.cooper@example.com",
-    price: 20,
-  },
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
-    email: "jane.cooper@example.com",
-    price: 20,
-  },
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
-    email: "jane.cooper@example.com",
-    price: 20,
-  },
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
-    email: "jane.cooper@example.com",
-    price: 20,
-  },
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
-    email: "jane.cooper@example.com",
-    price: 20,
-  },
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
-    email: "jane.cooper@example.com",
-    price: 20,
-  },
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
-    email: "jane.cooper@example.com",
-    price: 20,
-  },
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
-    email: "jane.cooper@example.com",
-    price: 20,
-  },
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
-    email: "jane.cooper@example.com",
-    price: 20,
-  },
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
-    email: "jane.cooper@example.com",
-    price: 20,
-  },
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
-    email: "jane.cooper@example.com",
-    price: 20,
-  },
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
-    email: "jane.cooper@example.com",
-    price: 20,
-  },
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
-    email: "jane.cooper@example.com",
-    price: 20,
-  },
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    department: "Optimization",
-    category: "Shoes",
-    email: "jane.cooper@example.com",
-    price: 20,
-  },
+
   // More people...
 ];
 
@@ -160,12 +33,12 @@ function OrderDashboardContent() {
   return (
     <div className="flex-auto font-mainFont max-h-screen overflow-auto">
       <div className="flex flex-col">
-        <TopBar nav="Dashboard / Order" />
+        <TopBar nav="Users" />
       </div>
       <div className="mx-16 my-10 ">
         <div className="flex items-center space-x-6">
           <p className="text-base font-bold text-gray-400">
-            Order List (Total = 190)
+            Users (Total = {people.length})
           </p>
         </div>
         <div className="flex flex-col my-6">
@@ -185,26 +58,21 @@ function OrderDashboardContent() {
                         scope="col"
                         className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Description
+                        Title
                       </th>
                       <th
                         scope="col"
                         className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Stock
+                        Status
                       </th>
                       <th
                         scope="col"
                         className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       >
-                        Category
+                        Role
                       </th>
-                      <th
-                        scope="col"
-                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      >
-                        Price
-                      </th>
+
                       <th scope="col" className="relative px-6 py-3">
                         <span className="sr-only">Edit</span>
                       </th>
@@ -226,17 +94,20 @@ function OrderDashboardContent() {
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {/* <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                            Active
-                          </span> */}
-                          {person.price}
+                          {person.active ? (
+                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                              Active
+                            </span>
+                          ) : (
+                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                              Inactive
+                            </span>
+                          )}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {person.category}
+                          {person.role}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          {person.price}
-                        </td>
+
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                           <a
                             href="#"
