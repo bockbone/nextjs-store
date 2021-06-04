@@ -165,7 +165,7 @@ function OrderDashboardContent() {
       <div className="mx-16 my-10 ">
         <div className="flex items-center space-x-6">
           <p className="text-base font-bold text-gray-400">
-            Order List (Total = 190)
+            Order List (Total = {people.length})
           </p>
         </div>
         <div className="flex flex-col my-6">

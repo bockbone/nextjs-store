@@ -1,3 +1,4 @@
+import Link from "next/link";
 import TopBar from "./topBar";
 import CustomButton from "../CustomButton";
 import { PlusCircleIcon } from "@heroicons/react/outline";
@@ -167,9 +168,13 @@ function ProductDashboardContent() {
       <div className="mx-16 my-10 ">
         <div className="flex items-center space-x-6">
           <p className="text-base font-bold text-gray-400">
-            Product List (Total = 190)
+            Product List (Total = {people.length})
           </p>
-          <CustomButton insideText="Add Product" Icon={PlusCircleIcon} />
+          <Link href="/dashboard/product/new">
+            <a>
+              <CustomButton insideText="Add Product" Icon={PlusCircleIcon} />
+            </a>
+          </Link>
         </div>
         <div className="flex flex-col my-6">
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

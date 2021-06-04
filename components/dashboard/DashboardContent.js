@@ -23,7 +23,7 @@ const people = [
     product: "Regional Paradigm Technician",
     purchaseDate: "11 Oct 2021",
     paidStatus: false,
-    shippingStatus: false,
+    shippingStatus: null,
     email: "jane.cooper@example.com",
   },
 ];
@@ -87,7 +87,11 @@ function DashboardContent() {
                           scope="col"
                           className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                         >
-                          Name
+                          Name (
+                          <span className="italic">
+                            Total - {people.length}
+                          </span>
+                          )
                         </th>
                         <th
                           scope="col"

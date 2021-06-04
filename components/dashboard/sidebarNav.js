@@ -11,7 +11,7 @@ function SidebarNav() {
   const router = useRouter();
   const currentPath = router.pathname;
   return (
-    <div>
+    <div className="space-y-1">
       <SidebarElement
         className={currentPath === "/dashboard" ? "active" : "dashboardNav"}
         text="Dashboard"
