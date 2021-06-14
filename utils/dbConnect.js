@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
-const db = process.env.MONGO_URI.replace("<password>", process.env.MONGO_PASS);
-
+const db = process.env.MONGO_URI;
 if (!db) {
   throw new Error("Please set your database url correctly");
 }

@@ -9,20 +9,24 @@ const ProductSchema = new mongoose.Schema({
   sku: {
     type: Number,
   },
+  price: {
+    type: Number,
+    // required: [true, "Please provide a price for the product"],
+  },
   description: {
     type: String,
-    required: [true, "Please provide a description for the product"],
+    // required: [true, "Please provide a description for the product"],
   },
   brand: {
     type: String,
   },
   category: {
     type: String,
-    required: [true, "Please provide a category for the product"],
+    // required: [true, "Please provide a category for the product"],
   },
   stock: {
     type: Number,
-    required: [true, "Please provide a stock quantity for the product"],
+    // required: [true, "Please provide a stock quantity for the product"],
   },
   published: {
     type: Boolean,
