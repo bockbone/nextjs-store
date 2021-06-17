@@ -13,13 +13,14 @@ export default async function handler(req, res) {
     case "GET":
       try {
         const product = await Product.findById(id);
+
         if (!product) {
           return res
             .status(400)
             .json({ status: "Fail", message: "No product found with that ID" });
         }
         res.status(200).json({
-          status: "Success",
+          success: true,
           data: product,
         });
       } catch (error) {

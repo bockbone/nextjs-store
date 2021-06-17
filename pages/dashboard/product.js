@@ -106,12 +106,13 @@ function ProductDashboard({ products }) {
                                   Details
                                 </a>
                               </Link>
-                              <a
-                                href="#"
-                                className="text-white  bg-indigo-600 hover:bg-indigo-700 px-2 py-1 rounded-full text-xs"
+                              <Link
+                                href={`/dashboard/product/${product._id}/edit`}
                               >
-                                Edit
-                              </a>
+                                <a className="text-white  bg-indigo-600 hover:bg-indigo-700 px-2 py-1 rounded-full text-xs">
+                                  Edit
+                                </a>
+                              </Link>
                             </td>
                           </tr>
                         ))}

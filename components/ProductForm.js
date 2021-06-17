@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { mutate } from "swr";
 
-const ProductForm = ({ productForm, forNewProduct = true }) => {
+const ProductForm = ({ formId, productForm, forNewProduct = true }) => {
   const router = useRouter();
   const contentType = "application/json";
   const [errors, setErrors] = useState({});
@@ -16,7 +16,7 @@ const ProductForm = ({ productForm, forNewProduct = true }) => {
     brand: productForm.brand,
     category: productForm.category,
     stock: productForm.stock,
-    draft: productForm.published,
+    draft: productForm.draft,
     image: productForm.image,
   });
 
@@ -42,6 +42,30 @@ const ProductForm = ({ productForm, forNewProduct = true }) => {
     }
   };
 
+  const updateProduct = async (form) => {
+    const { id } = router.query;
+    try {
+      const res = await fetch(`/api/products/${id}`, {
+        method: "PUT",
+        headers: {
+          Accept: contentType,
+          "Content-Type": contentType,
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) {
+        throw new Error(res.status);
+      }
+
+      const { data } = await res.json();
+      mutate(`/api/products/${id}`, data, false);
+      router.push("/dashboard/product");
+    } catch (error) {
+      setMessage("Failed to update pet");
+    }
+  };
+
   const handleChange = (e) => {
     const target = e.target;
     const value = target.name === "draft" ? target.checked : target.value;
@@ -53,11 +77,10 @@ const ProductForm = ({ productForm, forNewProduct = true }) => {
     e.preventDefault();
     const errs = formValidate();
     if (Object.keys(errs).length === 0) {
-      forNewProduct ? createProduct(form) : "";
+      forNewProduct ? createProduct(form) : updateProduct(form);
     } else {
       setErrors({ errs });
     }
-    // createData(form);
   };
 
   const formValidate = () => {
@@ -67,7 +90,7 @@ const ProductForm = ({ productForm, forNewProduct = true }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id={formId} onSubmit={handleSubmit}>
       <div className="shadow sm:rounded-md sm:overflow-hidden">
         <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
           <div className="col-span-6 sm:col-span-3">
@@ -95,6 +118,7 @@ const ProductForm = ({ productForm, forNewProduct = true }) => {
             <input
               type="text"
               name="sku"
+              value={form.sku}
               onChange={handleChange}
               className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             />
@@ -110,10 +134,9 @@ const ProductForm = ({ productForm, forNewProduct = true }) => {
               <textarea
                 name="description"
                 rows={3}
+                value={form.description}
                 onChange={handleChange}
                 className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md p-1"
-                placeholder="you@example.com"
-                defaultValue={""}
               />
             </div>
             <p className="mt-2 text-sm text-gray-500">
@@ -130,6 +153,7 @@ const ProductForm = ({ productForm, forNewProduct = true }) => {
             <input
               type="text"
               name="brand"
+              value={form.brand}
               onChange={handleChange}
               className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             />
@@ -147,6 +171,7 @@ const ProductForm = ({ productForm, forNewProduct = true }) => {
             <input
               type="text"
               name="category"
+              value={form.category}
               onChange={handleChange}
               className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             />
@@ -164,6 +189,7 @@ const ProductForm = ({ productForm, forNewProduct = true }) => {
             <input
               type="text"
               name="price"
+              value={form.price}
               onChange={handleChange}
               className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             />
@@ -178,6 +204,7 @@ const ProductForm = ({ productForm, forNewProduct = true }) => {
             <input
               type="text"
               name="stock"
+              value={form.stock}
               onChange={handleChange}
               className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             />
@@ -247,7 +274,7 @@ const ProductForm = ({ productForm, forNewProduct = true }) => {
             type="submit"
             className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            Create
+            Save
           </button>
         </div>
       </div>
