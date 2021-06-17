@@ -6,8 +6,24 @@ import TopBar from "../../components/dashboard/topBar";
 import Sidebar from "../../components/dashboard/Sidebar";
 import CustomButton from "../../components/CustomButton";
 import { PlusCircleIcon } from "@heroicons/react/outline";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 function ProductDashboard({ products }) {
+  const [message, setMessage] = useState("");
+  const router = useRouter();
+
+  const handleDelete = async (id) => {
+    try {
+      await fetch(`/api/products/${id}`, {
+        method: "DELETE",
+      });
+      router.push("/dashboard/product");
+    } catch (error) {
+      setMessage("Failed to delete product");
+    }
+  };
+
   return (
     <div>
       <Head>
@@ -35,6 +51,7 @@ function ProductDashboard({ products }) {
               </Link>
             </div>
             <div className="flex flex-col my-6">
+              {/* <div className="text-red-500 text-xs">{message}</div> */}
               <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                   <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -113,6 +130,13 @@ function ProductDashboard({ products }) {
                                   Edit
                                 </a>
                               </Link>
+
+                              <a
+                                className="cursor-pointer text-white bg-red-600 hover:bg-red-700 px-2 py-1 rounded-full text-xs"
+                                onClick={() => handleDelete(product._id)}
+                              >
+                                Delete
+                              </a>
                             </td>
                           </tr>
                         ))}

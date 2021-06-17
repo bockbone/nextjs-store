@@ -14,7 +14,7 @@ function EditProduct({ product }) {
     brand: product.brand,
     category: product.category,
     stock: product.stock,
-    draft: product.published,
+    draft: product.draft,
     image: product.image,
   };
 
