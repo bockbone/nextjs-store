@@ -1,4 +1,7 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
+import validator from 'validator';
+import crypto from 'crypto';
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -10,6 +13,7 @@ const UserSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
     required: [true, 'Please provide your email'],
+    validate: [validator.isEmail, 'Please provide a valid email'],
   },
   photo: String,
   role: {
@@ -26,12 +30,12 @@ const UserSchema = new mongoose.Schema({
   passwordConfirm: {
     type: String,
     required: [true, 'Please confirm your password'],
-    // validate: {
-    //   validator: function (el) {
-    //     return el === this.password;
-    //   },
-    //   message: 'Password are not the same',
-    // },
+    validate: {
+      validator: function (el) {
+        return el === this.password;
+      },
+      message: 'Password are not the same',
+    },
   },
 });
 

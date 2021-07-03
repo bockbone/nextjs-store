@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { useRouter } from "next/router";
-import { mutate } from "swr";
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { mutate } from 'swr';
 
 const ProductForm = ({ formId, productForm, forNewProduct = true }) => {
   const router = useRouter();
-  const contentType = "application/json";
+  const contentType = 'application/json';
   const [errors, setErrors] = useState({});
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
 
   const [form, setForm] = useState({
     name: productForm.name,
@@ -22,11 +22,11 @@ const ProductForm = ({ formId, productForm, forNewProduct = true }) => {
 
   const createProduct = async (form) => {
     try {
-      const res = await fetch("/api/products", {
-        method: "POST",
+      const res = await fetch('/api/products', {
+        method: 'POST',
         headers: {
           Accept: contentType,
-          "Content-Type": contentType,
+          'Content-Type': contentType,
         },
         body: JSON.stringify(form),
       });
@@ -35,9 +35,9 @@ const ProductForm = ({ formId, productForm, forNewProduct = true }) => {
         throw new Error(res.status);
       }
 
-      router.push("/dashboard/product");
+      router.push('/dashboard/product');
     } catch (error) {
-      setMessage("Failed to add product");
+      setMessage('Failed to add product');
       console.log(error);
     }
   };
@@ -46,10 +46,10 @@ const ProductForm = ({ formId, productForm, forNewProduct = true }) => {
     const { id } = router.query;
     try {
       const res = await fetch(`/api/products/${id}`, {
-        method: "PUT",
+        method: 'PUT',
         headers: {
           Accept: contentType,
-          "Content-Type": contentType,
+          'Content-Type': contentType,
         },
         body: JSON.stringify(form),
       });
@@ -60,15 +60,15 @@ const ProductForm = ({ formId, productForm, forNewProduct = true }) => {
 
       const { data } = await res.json();
       mutate(`/api/products/${id}`, data, false);
-      router.push("/dashboard/product");
+      router.push('/dashboard/product');
     } catch (error) {
-      setMessage("Failed to update pet");
+      setMessage('Failed to update pet');
     }
   };
 
   const handleChange = (e) => {
     const target = e.target;
-    const value = target.name === "draft" ? target.checked : target.value;
+    const value = target.name === 'draft' ? target.checked : target.value;
     const name = target.name;
     setForm({ ...form, [name]: value });
   };
@@ -85,7 +85,7 @@ const ProductForm = ({ formId, productForm, forNewProduct = true }) => {
 
   const formValidate = () => {
     let err = {};
-    if (!form.name) err.name = "Name is required";
+    if (!form.name) err.name = 'Name is required';
     return err;
   };
 
